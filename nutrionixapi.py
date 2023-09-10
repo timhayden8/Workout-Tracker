@@ -12,7 +12,6 @@ def nutrionixapi(query):
         'x-app-id':os.environ.get('nutrionixappid'),
         'x-app-key':os.environ.get('nutrionixkey'),
     }
-
     parameters={
         'query':query,
         'gender':'male',
