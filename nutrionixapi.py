@@ -20,7 +20,6 @@ def nutrionixapi(query):
         'height_cm':182.88,
         'age':30
     }
-    #
     response = requests.post(url = nutrionixendpoint,json=parameters, headers=header)
     for exercise in response.json()["exercises"]:
         try:
