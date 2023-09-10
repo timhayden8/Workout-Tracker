@@ -9,7 +9,7 @@ def nutrionixapi(query):
     query=query
     nutrionixendpoint = 'https://trackapi.nutritionix.com/v2/natural/exercise'
     header={
-        'x-app-id':'430ca3e0',
+        'x-app-id':os.environ.get('nutrionixappid'),
         'x-app-key':os.environ.get('nutrionixkey'),
     }
 
