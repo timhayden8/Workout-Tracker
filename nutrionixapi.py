@@ -21,20 +21,21 @@ def nutrionixapi(query):
         'age':30
     }
     response = requests.post(url = nutrionixendpoint,json=parameters, headers=header)
-    try:
-        for exercise in response.json()["exercises"]:
-            try:
-                sheet_inputs = {
-                    'workout': {
-                        "date": currentdate,
-                        "time": currenttime,
-                        "exercise": exercise["name"].title(),
-                        "duration": exercise["duration_min"],
-                        "calories": exercise["nf_calories"]
-                    }
+    for exercise in response.json()["exercises"]:
+        try:
+            print(exercise["duration_min"])
+            duration = exercise["duration_min"]
+            sheet_inputs = {
+                'workout': {
+                    "date": currentdate,
+                    "time": currenttime,
+                    "exercise": exercise["name"].title(),
+                    "duration": f"{duration} minutes",
+                    "calories": exercise["nf_calories"]
                 }
-                sheetwriter(sheet_inputs)
-            except:
-                continue
-    except:
-        print("Did you add your environment variables?")
+            }
+            print(sheet_inputs)
+            sheetwriter(sheet_inputs)
+        except:
+            continue
+
